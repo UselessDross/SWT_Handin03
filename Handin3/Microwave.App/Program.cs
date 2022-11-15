@@ -24,12 +24,27 @@ namespace Microwave.App
 
             Microwave.Classes.Boundary.Timer timer = new Timer();
 
+            //<Configurab powerTube value>
+            powerTube.configPower(800);
+            //</Configurab powerTube value>
+            /**
+             * NOTE:
+             * the assignment 4.1.2 states:
+             * "you must make changes to the design, such that this value is configurable to other values [...]
+             * from the main function, WHEN setting up and connecting all the modules BEFORE the system starts running."
+             * 
+             * please state if this has been done incrractly*/
+
+
+
             CookController cooker = new CookController(timer, display, powerTube);
+
 
             UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker);
 
             // Finish the double association
             cooker.UI = ui;
+
 
             // Simulate a simple sequence
 

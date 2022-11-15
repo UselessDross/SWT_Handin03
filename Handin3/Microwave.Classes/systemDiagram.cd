@@ -66,14 +66,14 @@
     <Position X="21.25" Y="5.5" Width="2.25" />
     <AssociationLine Name="myOutput" Type="Microwave.Classes.Interfaces.IOutput" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="22.375" Y="7.44" />
+        <Point X="22.375" Y="7.825" />
         <Point X="22.375" Y="8.394" />
         <Point X="9.438" Y="8.394" />
         <Point X="9.438" Y="8.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAQAAAAAQAAAAABQAAAAAAIAAA=</HashCode>
       <FileName>Boundary\PowerTube.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -132,9 +132,9 @@
       <FileName>Controllers\UserInterface.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="myDisplay" />
       <Field Name="myCooker" />
       <Field Name="myLight" />
+      <Field Name="myDisplay" />
     </ShowAsAssociation>
     <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
   </Class>
