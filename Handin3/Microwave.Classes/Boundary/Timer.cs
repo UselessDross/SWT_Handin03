@@ -28,6 +28,9 @@ namespace Microwave.Classes.Boundary
             timer.Enabled = true;
         }
 
+        public void AddTime(int seconds) => throw new NotImplementedException();
+        public void SubtractTime(int seconds) => throw new NotImplementedException();
+
         public void Stop()
         {
             timer.Enabled = false;
