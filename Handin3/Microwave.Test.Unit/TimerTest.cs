@@ -15,6 +15,87 @@ namespace Microwave.Test.Unit
             uut = new Timer();
         }
 
+        //<NEW TEST>
+        [TestCase(1)]
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        public void Stop_AddTimer_addedsTime(int startTime)
+        {
+            ManualResetEvent pause = new ManualResetEvent(false);
+            uut.TimerTick += (sender, args) => pause.Set();
+            uut.Start(startTime);
+            uut.Stop();
+
+            uut.AddTime(1);
+            
+
+            // the remaning time should be above startTime
+            Assert.That(uut.TimeRemaining,Is.GreaterThan(startTime));
+        }
+        //</NEW TEST>
+
+
+        //<NEW TEST>
+        [TestCase(1)]
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        public void Start_AddTimer_addedsTime(int startTime)
+        {
+            ManualResetEvent pause = new ManualResetEvent(false);
+            uut.TimerTick += (sender, args) => pause.Set();
+            uut.Start(startTime);
+         
+            uut.AddTime(1);
+            uut.AddTime(1);
+
+
+            // the remaning time should be above startTime
+            Assert.That(uut.TimeRemaining, Is.GreaterThan(startTime));
+        }
+        //</NEW TEST>
+
+
+        //<NEW TEST>
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        [TestCase(11)]
+        public void Stop_subtract_subtractTime(int startTime)
+        {
+            ManualResetEvent pause = new ManualResetEvent(false);
+            uut.TimerTick += (sender, args) => pause.Set();
+            uut.Start(startTime);
+            uut.Stop();
+
+            uut.SubtractTime(1);
+
+            // the remaning time should be above startTime
+            Assert.That(uut.TimeRemaining, Is.LessThan(startTime-1));
+        }
+        //</NEW TEST>
+
+        //<NEW TEST>
+        [TestCase(3)]
+        [TestCase(5)]
+        [TestCase(7)]
+        [TestCase(11)]
+        public void Start_subtract_subtractTime(int startTime)
+        {
+            ManualResetEvent pause = new ManualResetEvent(false);
+            uut.TimerTick += (sender, args) => pause.Set();
+            uut.Start(startTime);
+
+
+            uut.SubtractTime(1);
+
+            // the remaning time should be above startTime
+            Assert.That(uut.TimeRemaining, Is.LessThan(startTime - 1));
+        }
+        //</NEW TEST>
+
+
         [Test]
         public void Start_TimerTick_ShortEnough()
         {
@@ -147,5 +228,9 @@ namespace Microwave.Test.Unit
 
             Assert.That(uut.TimeRemaining, Is.EqualTo(5-ticks*1));
         }
+
+
+
+
     }
 }
