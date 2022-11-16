@@ -20,7 +20,7 @@ namespace Microwave.Test.Unit
         {
             ManualResetEvent pause = new ManualResetEvent(false);
 
-            uut.TimerTick += (sender, args) => pause.Set();
+            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(2);
 
             // wait for a tick, but no longer
@@ -32,7 +32,7 @@ namespace Microwave.Test.Unit
         {
             ManualResetEvent pause = new ManualResetEvent(false);
 
-            uut.TimerTick += (sender, args) => pause.Set();
+            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(2);
 
             // wait shorter than a tick, shouldn't come
@@ -70,7 +70,7 @@ namespace Microwave.Test.Unit
             int notifications = 0;
 
             uut.Expired += (sender, args) => pause.Set();
-            uut.TimerTick += (sender, args) => notifications++;
+            uut.TimeChanged += (sender, args) => notifications++;
 
             uut.Start(2);
 
@@ -91,7 +91,7 @@ namespace Microwave.Test.Unit
         {
             ManualResetEvent pause = new ManualResetEvent(false);
 
-            uut.TimerTick += (sender, args) => pause.Set();
+            uut.TimeChanged += (sender, args) => pause.Set();
 
             uut.Start(2000);
             uut.Stop();
@@ -119,7 +119,7 @@ namespace Microwave.Test.Unit
             int notifications = 0;
 
             uut.Expired += (sender, args) => pause.Set();
-            uut.TimerTick += (sender, args) => uut.Stop();
+            uut.TimeChanged += (sender, args) => uut.Stop();
 
             uut.Start(2000);
 
@@ -134,7 +134,7 @@ namespace Microwave.Test.Unit
         {
             ManualResetEvent pause = new ManualResetEvent(false);
             int ticksGone = 0;
-            uut.TimerTick += (sender, args) =>
+            uut.TimeChanged += (sender, args) =>
             {
                 ticksGone++;
                 if (ticksGone >= ticks)

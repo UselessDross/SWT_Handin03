@@ -174,7 +174,7 @@ namespace Microwave.Test.Integration
             addTimeButton.Press();
             startCancelButton.Press();
 
-            faketimer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
+            faketimer.TimeChanged += Raise.EventWith(this, EventArgs.Empty);
 
             output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("00:59")));
         }

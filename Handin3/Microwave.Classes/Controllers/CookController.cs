@@ -34,7 +34,7 @@ namespace Microwave.Classes.Controllers
             myPowerTube = powerTube;
 
             timer.Expired += new EventHandler(OnTimerExpired);
-            timer.TimerTick += new EventHandler(OnTimerTick);
+            timer.TimeChanged += new EventHandler(OnTimeChanged);
         }
 
         public void StartCooking(int power, int time)
@@ -64,7 +64,7 @@ namespace Microwave.Classes.Controllers
             }
         }
 
-        public void OnTimerTick(object sender, EventArgs e)
+        public void OnTimeChanged(object sender, EventArgs e)
         {
             if (isCooking)
             {
