@@ -69,7 +69,7 @@ namespace Microwave.Test.Unit
             uut.Start(startTime);
             uut.Stop();
 
-            uut.SubtractTime(1);
+            uut.SubtractTime(10);
 
             // the remaning time should be above startTime
             Assert.That(uut.TimeRemaining, Is.LessThan(startTime-1));
@@ -88,7 +88,7 @@ namespace Microwave.Test.Unit
             uut.Start(startTime);
 
 
-            uut.SubtractTime(1);
+            uut.SubtractTime(10);
 
             // the remaning time should be above startTime
             Assert.That(uut.TimeRemaining, Is.LessThan(startTime - 1));
