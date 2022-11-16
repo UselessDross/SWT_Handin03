@@ -12,7 +12,7 @@ namespace Microwave.Classes.Boundary
         public PowerTube(IOutput output, int PowerTubePower = 700)
         {
             myOutput = output;
-            configPower(PowerTubePower);
+            ConfigPower(PowerTubePower);
         }
 
         public void TurnOn(int power)
@@ -50,7 +50,7 @@ namespace Microwave.Classes.Boundary
 
 
         private int Power_ = 0;
-        public void configPower(int power)
+        public void ConfigPower(int power)
         {
             if (power < 1) throw new ArgumentException("configuring the power tube must be above 1, power value not set to > 1");
             Power_ = power;
