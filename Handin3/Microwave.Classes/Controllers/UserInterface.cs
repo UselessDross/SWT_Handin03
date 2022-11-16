@@ -76,11 +76,28 @@ namespace Microwave.Classes.Controllers
                     time += 1;
                     myDisplay.ShowTime(time, 0);
                     break;
-                default:
-                    throw new NotImplementedException();
+                case States.COOKING:
+                    myCooker.AddTime(10);
+                    break;
             }
         }
-        public void OnSubtractTimePressed(object sender, EventArgs e) => throw new NotImplementedException();
+        public void OnSubtractTimePressed(object sender, EventArgs e)
+        {
+            switch (myState)
+            {
+                case States.SETPOWER:
+                    myDisplay.ShowTime(time, 0);
+                    myState = States.SETTIME;
+                    break;
+                case States.SETTIME:
+                    time -= 1;
+                    myDisplay.ShowTime(time, 0);
+                    break;
+                case States.COOKING:
+                    myCooker.SubtractTime(10);
+                    break;
+            }
+        }
 
         public void OnStartCancelPressed(object sender, EventArgs e)
         {

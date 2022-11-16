@@ -44,9 +44,8 @@ namespace Microwave.Classes.Controllers
             isCooking = true;
         }
 
-        public void AddTime(int time) => throw new NotImplementedException();
-
-        public void SubtractTime(int time) => throw new NotImplementedException();
+        public void AddTime(int seconds) => myTimer.AddTime(seconds);
+        public void SubtractTime(int seconds) => myTimer.SubtractTime(seconds);
 
         public void Stop()
         {
