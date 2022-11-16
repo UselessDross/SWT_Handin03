@@ -15,7 +15,8 @@ namespace Microwave.Test.Integration
     {
         private Door door;
         private Button powerButton;
-        private Button timeButton;
+        private Button addTimeButton;
+        private Button subtractTimeButton;
         private Button startCancelButton;
 
         private UserInterface ui;
@@ -34,7 +35,8 @@ namespace Microwave.Test.Integration
         {
             door = new Door();
             powerButton = new Button();
-            timeButton = new Button();
+            addTimeButton = new Button();
+            subtractTimeButton = new Button();
             startCancelButton = new Button();
 
             output = Substitute.For<IOutput>();
@@ -47,7 +49,7 @@ namespace Microwave.Test.Integration
 
             cooker = new CookController(timer, display, powerTube);
 
-            ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, cooker);
+            ui = new UserInterface(powerButton, addTimeButton, subtractTimeButton, startCancelButton, door, display, light, cooker);
             cooker.UI = ui;
         }
 
@@ -57,7 +59,7 @@ namespace Microwave.Test.Integration
         public void CookController_PowerTube_TurnOn_50W()
         {
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Should now be started with 50W
@@ -70,7 +72,7 @@ namespace Microwave.Test.Integration
             powerButton.Press();
             powerButton.Press();
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Should now be started with 150W
@@ -84,7 +86,7 @@ namespace Microwave.Test.Integration
             {
                 powerButton.Press();
             }
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Should now be started with 700W
@@ -95,7 +97,7 @@ namespace Microwave.Test.Integration
         public void CookController_PowerTube_TurnOff()
         {
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Now we force stopping
@@ -112,7 +114,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Timer is included, so we can wait for 2 time tick
@@ -126,7 +128,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            subtractTimeButton.Press();
             startCancelButton.Press();
 
             // Timer is included, so we can wait for 1 time tick, or we can 
@@ -144,7 +146,8 @@ namespace Microwave.Test.Integration
             // But shows the big setup for just this
             door = new Door();
             powerButton = new Button();
-            timeButton = new Button();
+            addTimeButton = new Button();
+            subtractTimeButton = new Button();
             startCancelButton = new Button();
 
             output = Substitute.For<IOutput>();
@@ -158,7 +161,7 @@ namespace Microwave.Test.Integration
             cooker = new CookController(faketimer, display, powerTube);
             // Then we must make a new UI
             ui = new UserInterface(
-                powerButton, timeButton, startCancelButton,
+                powerButton, addTimeButton, subtractTimeButton, startCancelButton,
                 door, display, light, cooker);
             // And make the association
             cooker.UI = ui;
@@ -168,7 +171,7 @@ namespace Microwave.Test.Integration
 
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             faketimer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
@@ -185,7 +188,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             Thread.Sleep(60500);  // Wait for a minute
@@ -198,7 +201,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             Thread.Sleep(59900);  // Wait a little less than a minute
@@ -214,7 +217,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             // Stop again
@@ -236,7 +239,7 @@ namespace Microwave.Test.Integration
         {
             // Starting up with 50 W and 1 minute
             powerButton.Press();
-            timeButton.Press();
+            addTimeButton.Press();
             startCancelButton.Press();
 
             Thread.Sleep(60500);  // Wait for a minute

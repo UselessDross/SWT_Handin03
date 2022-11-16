@@ -44,6 +44,10 @@ namespace Microwave.Classes.Controllers
             isCooking = true;
         }
 
+        public void AddTime(int time) => throw new NotImplementedException();
+
+        public void SubtractTime(int time) => throw new NotImplementedException();
+
         public void Stop()
         {
             isCooking = false;
