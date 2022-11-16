@@ -11,7 +11,7 @@ namespace Microwave.Classes.Boundary
             set
             {
                 _timeRemaining = Math.Max(0, value);
-                TimerTick?.Invoke(this, EventArgs.Empty);
+                TimeChanged?.Invoke(this, EventArgs.Empty);
 
                 if (_timeRemaining <= 0) Expire();
             }
@@ -19,7 +19,7 @@ namespace Microwave.Classes.Boundary
         private int _timeRemaining;
 
         public event EventHandler Expired;
-        public event EventHandler TimerTick;
+        public event EventHandler TimeChanged;
 
         private System.Timers.Timer timer;
 
@@ -35,7 +35,7 @@ namespace Microwave.Classes.Boundary
 
         public void Start(int time)
         {
-            TimeRemaining = time;
+            _timeRemaining = time;
             timer.Enabled = true;
         }
 
