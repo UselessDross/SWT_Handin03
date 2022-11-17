@@ -31,7 +31,7 @@ namespace Microwave.Test.Unit
         [TestCase(800)]
         public void ConfigPower_LegalPower_ThrowsNoException(int maxPower)
         {
-            Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.ConfigPower(maxPower));
+            uut.ConfigPower(maxPower);
         }
         [TestCase(-10)]
         [TestCase(0)]

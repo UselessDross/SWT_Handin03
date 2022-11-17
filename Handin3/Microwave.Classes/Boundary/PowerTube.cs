@@ -52,7 +52,7 @@ namespace Microwave.Classes.Boundary
         private int Power_ = 0;
         public void ConfigPower(int power)
         {
-            if (power < 1) throw new ArgumentException("configuring the power tube must be above 1, power value not set to > 1");
+            if (power < 1) throw new ArgumentOutOfRangeException("configuring the power tube must be above 1, power value not set to > 1");
             Power_ = power;
         }
     }
