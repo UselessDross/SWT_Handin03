@@ -43,6 +43,82 @@ namespace Microwave.Test.Unit
                 cooker);
         }
 
+        //<NEW TEST>
+        [Test]
+        public void SetPower_2SubtractTimeButton_TimeIs3()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            subtractTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            subtractTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            display.Received(2).ShowTime(Arg.Is<int>(3), Arg.Is<int>(0));
+        }
+        //</NEW TEST>
+
+
+        //<NEW TEST>
+        [Test]
+        public void Cooking_2SubtractTimeButton_TimeIs3()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            subtractTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            subtractTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            cooker.Received(2).SubtractTime(10);
+        }
+        //</NEW TEST>
+
+        //<NEW TEST>
+        [Test]
+        public void SetPower_2addTimeButton_TimeIs2()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+
+            display.Received(1).ShowTime(Arg.Is<int>(2), Arg.Is<int>(0));
+        }
+        //</NEW TEST>
+
+
+        //<NEW TEST>
+        [Test]
+        public void Cooking_2addTimeButton_TimeIs4()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+
+            startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            addTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            cooker.Received(2).AddTime(10);
+        }
+        //</NEW TEST>
+
+
         [Test]
         public void Ready_DoorOpen_LightOn()
         {
