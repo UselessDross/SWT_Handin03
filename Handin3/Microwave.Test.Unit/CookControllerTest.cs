@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microwave.Classes.Controllers;
 using Microwave.Classes.Interfaces;
 using NSubstitute;
@@ -28,6 +29,19 @@ namespace Microwave.Test.Unit
 
             uut = new CookController(timer, buzzer, display, powerTube, ui);
         }
+
+
+        //<NEW TEST>
+        [Test]
+        public void Cooking_TimerExpired_BuzzerPlays()
+        {
+            uut.StartCooking(50, 60);
+
+            timer.Expired += Raise.EventWith(this, EventArgs.Empty);
+
+            buzzer.Received(1);
+        }
+        //</NEW TEST>
 
         [Test]
         public void StartCooking_ValidParameters_TimerStarted()
