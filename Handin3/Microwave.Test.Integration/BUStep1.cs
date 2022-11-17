@@ -13,6 +13,7 @@ namespace Microwave.Test.Integration
     {
         private IOutput output;
         private Timer timer;
+        private Buzzer buzzer;
         private Display display;
         private PowerTube powerTube;
         private CookController cooker;
@@ -25,12 +26,13 @@ namespace Microwave.Test.Integration
             output = Substitute.For<IOutput>();
 
             timer = new Timer();
+            buzzer = new Buzzer();
             display = new Display(output);
             powerTube = new PowerTube(output);
 
             ui = Substitute.For<IUserInterface>();
 
-            cooker = new CookController(timer, display, powerTube, ui);
+            cooker = new CookController(timer, buzzer, display, powerTube, ui);
         }
 
         #region CookController_PowerTube

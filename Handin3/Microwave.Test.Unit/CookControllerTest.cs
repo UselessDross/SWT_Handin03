@@ -13,6 +13,7 @@ namespace Microwave.Test.Unit
 
         private IUserInterface ui;
         private ITimer timer;
+        private IBuzzer buzzer;
         private IDisplay display;
         private IPowerTube powerTube;
 
@@ -21,10 +22,11 @@ namespace Microwave.Test.Unit
         {
             ui = Substitute.For<IUserInterface>();
             timer = Substitute.For<ITimer>();
+            buzzer = Substitute.For<IBuzzer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
 
-            uut = new CookController(timer, display, powerTube, ui);
+            uut = new CookController(timer, buzzer, display, powerTube, ui);
         }
 
         [Test]
