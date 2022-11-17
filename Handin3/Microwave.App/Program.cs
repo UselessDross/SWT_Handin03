@@ -25,7 +25,7 @@ namespace Microwave.App
             Microwave.Classes.Boundary.Timer timer = new Timer();
 
             //<Configurab powerTube value>
-            powerTube.configPower(800);
+            powerTube.ConfigPower(800);
             //</Configurab powerTube value>
             /**
              * NOTE:
