@@ -61,6 +61,12 @@ namespace Microwave.Classes.Controllers
             {
                 isCooking = false;
                 myPowerTube.TurnOff();
+                myBuzzer.Play(new BuzzerTone[]
+                {
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                });
                 UI.CookingIsDone();
             }
         }
