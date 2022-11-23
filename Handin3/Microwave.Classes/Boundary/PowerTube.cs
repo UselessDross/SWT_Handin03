@@ -17,12 +17,6 @@ namespace Microwave.Classes.Boundary
 
         public void TurnOn(int power)
         {
-            if (Power_ < 1)
-            {
-                throw new Exception("PowerTube not configured. Possible solution: call configPower()");
-            }
-
-
             if (power < 1 || Power_ < power)
             {
                 throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700 (incl.)");
