@@ -19,24 +19,47 @@ namespace Microwave.Test.Unit
             uut = new PowerTube(output);
         }
 
-        [TestCase(1)]
-        [TestCase(50)]
-        [TestCase(100)]
-        [TestCase(699)]
-        [TestCase(700)]
-        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power)
+        [TestCase(-10)]
+        [TestCase(0)]
+        public void Constructor_IllegalPowerTubePower_ThrowsException(int maxPower)
         {
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => new PowerTube(output, maxPower));
+        }
+
+        [TestCase(1)]
+        [TestCase(200)]
+        [TestCase(1000)]
+        public void ConfigPower_LegalPower_ThrowsNoException(int maxPower)
+        {
+            Assert.DoesNotThrow(() => uut.ConfigPower(maxPower));
+        }
+        [TestCase(-10)]
+        [TestCase(0)]
+        public void ConfigPower_IllegalPower_ThrowsException(int maxPower)
+        {
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.ConfigPower(maxPower));
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(1, 200)]
+        [TestCase(100, 200)]
+        [TestCase(200, 200)]
+        [TestCase(800, 1000)]
+        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power, int maxPower)
+        {
+            uut.ConfigPower(maxPower);
             uut.TurnOn(power);
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
         }
 
-        [TestCase(-5)]
-        [TestCase(-1)]
-        [TestCase(0)]
-        [TestCase(701)]
-        [TestCase(750)]
-        public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power)
+        [TestCase(-5, 10)]
+        [TestCase(-1, 10)]
+        [TestCase(0, 10)]
+        [TestCase(11, 10)]
+        [TestCase(701, 700)]
+        public void TurnOn_WasOffOutOfRangePower_ThrowsException(int power, int maxPower)
         {
+            uut.ConfigPower(maxPower);
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.TurnOn(power));
         }
 

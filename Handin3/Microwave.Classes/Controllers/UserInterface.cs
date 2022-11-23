@@ -49,6 +49,14 @@ namespace Microwave.Classes.Controllers
             time = 1;
         }
 
+
+        //<newcode>
+
+
+        //</newcode>
+
+
+
         public void OnPowerPressed(object sender, EventArgs e)
         {
             switch (myState)

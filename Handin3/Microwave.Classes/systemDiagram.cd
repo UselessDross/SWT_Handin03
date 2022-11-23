@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Microwave.Classes.Boundary.Button" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAA=</HashCode>
+      <FileName>Boundary\Button.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.242" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.Display" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="5.5" Width="2.5" />
+    <AssociationLine Name="myOutput" Type="Microwave.Classes.Interfaces.IOutput" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.5" Y="7.18" />
+        <Point X="17.5" Y="8.133" />
+        <Point X="8.438" Y="8.133" />
+        <Point X="8.438" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEEAABAAAA=</HashCode>
+      <FileName>Boundary\Display.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="myOutput" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.Door" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Boundary\Door.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.Light" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.75" />
+    <AssociationLine Name="myOutput" Type="Microwave.Classes.Interfaces.IOutput" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.125" Y="7.44" />
+        <Point X="11.125" Y="7.733" />
+        <Point X="7.375" Y="7.733" />
+        <Point X="7.375" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAARAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Boundary\Light.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="myOutput" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.132" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.Output" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Boundary\Output.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.PowerTube" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="5.5" Width="2.25" />
+    <AssociationLine Name="myOutput" Type="Microwave.Classes.Interfaces.IOutput" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22.375" Y="7.825" />
+        <Point X="22.375" Y="8.394" />
+        <Point X="9.438" Y="8.394" />
+        <Point X="9.438" Y="8.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABgAAAAAAAAAAAAAAAAQAAAAAQAAAAABQAAAAAAAAAA=</HashCode>
+      <FileName>Boundary\PowerTube.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="myOutput" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Boundary.Timer" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="11.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAA0AAAAAAAAAAABIAAAQAAAAAA=</HashCode>
+      <FileName>Boundary\Timer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Controllers.CookController" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.25" Width="5.5" />
+    <AssociationLine Name="myDisplay" Type="Microwave.Classes.Interfaces.IDisplay" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.625" Y="4.218" />
+        <Point X="18.625" Y="4.939" />
+        <Point X="15" Y="4.939" />
+        <Point X="15" Y="5.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="myTimer" Type="Microwave.Classes.Interfaces.ITimer" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="24" Y="4.062" />
+        <Point X="24" Y="10.811" />
+        <Point X="8.312" Y="10.811" />
+        <Point X="8.312" Y="11.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIBAIAAAEAA=</HashCode>
+      <FileName>Controllers\CookController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="myDisplay" />
+      <Field Name="myPowerTube" />
+      <Field Name="myTimer" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Microwave.Classes.Controllers.UserInterface" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="1.25" Width="9" />
+    <NestedTypes>
+      <Enum Name="Microwave.Classes.Controllers.UserInterface.States" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\UserInterface.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgQJAAAAABAAAAAAAAAIQoAAQACAAAAAAAIAAAAAABA=</HashCode>
+      <FileName>Controllers\UserInterface.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="myCooker" />
+      <Field Name="myLight" />
+      <Field Name="myDisplay" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Interface Name="Microwave.Classes.Interfaces.IButton">
+    <Position X="1.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAA=</HashCode>
+      <FileName>Interfaces\IButton.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.ICookController">
+    <Position X="15.5" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICookController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.IDisplay">
+    <Position X="13" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAABAAAA=</HashCode>
+      <FileName>Interfaces\IDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.IDoor">
+    <Position X="1.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Interfaces\IDoor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.ILight">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILight.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.IOutput">
+    <Position X="7.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IOutput.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.IPowerTube">
+    <Position X="19" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPowerTube.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.ITimer">
+    <Position X="7.25" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAEAAAAAAAAAAABIAAAQAAAAAA=</HashCode>
+      <FileName>Interfaces\ITimer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microwave.Classes.Interfaces.IUserInterface">
+    <Position X="1.5" Y="1.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAAAAAAAAQoAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IUserInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -9,14 +9,15 @@ namespace Microwave.Classes.Boundary
 
         private bool IsOn = false;
 
-        public PowerTube(IOutput output)
+        public PowerTube(IOutput output, int PowerTubePower = 700)
         {
             myOutput = output;
+            ConfigPower(PowerTubePower);
         }
 
         public void TurnOn(int power)
         {
-            if (power < 1 || 700 < power)
+            if (power < 1 || Power_ < power)
             {
                 throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 700 (incl.)");
             }
@@ -38,6 +39,15 @@ namespace Microwave.Classes.Boundary
             }
 
             IsOn = false;
+        }
+
+
+
+        private int Power_ = 0;
+        public void ConfigPower(int power)
+        {
+            if (power < 1) throw new ArgumentOutOfRangeException("configuring the power tube must be above 1, power value not set to > 1");
+            Power_ = power;
         }
     }
 }
