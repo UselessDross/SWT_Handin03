@@ -27,11 +27,11 @@ namespace Microwave.Test.Unit
         }
 
         [TestCase(1)]
-        [TestCase(10)]
-        [TestCase(800)]
+        [TestCase(200)]
+        [TestCase(1000)]
         public void ConfigPower_LegalPower_ThrowsNoException(int maxPower)
         {
-            uut.ConfigPower(maxPower);
+            Assert.DoesNotThrow(() => uut.ConfigPower(maxPower));
         }
         [TestCase(-10)]
         [TestCase(0)]
@@ -40,7 +40,9 @@ namespace Microwave.Test.Unit
             Assert.Throws<System.ArgumentOutOfRangeException>(() => uut.ConfigPower(maxPower));
         }
 
-        [TestCase(1, 10)]
+        [TestCase(1, 1)]
+        [TestCase(1, 200)]
+        [TestCase(100, 200)]
         [TestCase(200, 200)]
         [TestCase(800, 1000)]
         public void TurnOn_WasOffCorrectPower_CorrectOutput(int power, int maxPower)

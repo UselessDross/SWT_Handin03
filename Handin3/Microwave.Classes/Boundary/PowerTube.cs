@@ -17,7 +17,7 @@ namespace Microwave.Classes.Boundary
 
         public void TurnOn(int power)
         {
-            if (Power_ < 1 || Power_ == 1)
+            if (Power_ < 1)
             {
                 throw new Exception("PowerTube not configured. Possible solution: call configPower()");
             }
