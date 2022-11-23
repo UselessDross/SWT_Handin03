@@ -24,7 +24,8 @@ namespace Microwave.App
 
             Light light = new Light(output);
 
-            Microwave.Classes.Boundary.Timer timer = new Timer();
+            Timer timer = new Timer();
+            Buzzer buzzer = new Buzzer();
 
             //<Configurab powerTube value>
             powerTube.ConfigPower(800);
