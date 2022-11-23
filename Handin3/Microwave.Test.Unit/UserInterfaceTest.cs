@@ -84,6 +84,22 @@ namespace Microwave.Test.Unit
         }
         //</NEW TEST>
 
+
+        //<NEW TEST>
+        [Test]
+        public void powerON_1SubtractTimeButton_time0()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            subtractTimeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+           
+            startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+
+            cooker.Received(1).StartCooking(50,60);
+        }
+        //</NEW TEST>
+
         //<NEW TEST>
         [Test]
         public void SetPower_2addTimeButton_TimeIs2()
