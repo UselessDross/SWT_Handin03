@@ -22,7 +22,8 @@ namespace Microwave.Classes.Controllers
 
         public UserInterface(
             IButton powerButton,
-            IButton timeButton,
+            IButton addTimeButton,
+            IButton subtractTimeButton,
             IButton startCancelButton,
             IDoor door,
             IDisplay display,
@@ -30,7 +31,8 @@ namespace Microwave.Classes.Controllers
             ICookController cooker)
         {
             powerButton.Pressed += new EventHandler(OnPowerPressed);
-            timeButton.Pressed += new EventHandler(OnTimePressed);
+            addTimeButton.Pressed += new EventHandler(OnAddTimePressed);
+            subtractTimeButton.Pressed += new EventHandler(OnSubtractTimePressed);
             startCancelButton.Pressed += new EventHandler(OnStartCancelPressed);
 
             door.Closed += new EventHandler(OnDoorClosed);
@@ -62,7 +64,7 @@ namespace Microwave.Classes.Controllers
             }
         }
 
-        public void OnTimePressed(object sender, EventArgs e)
+        public void OnAddTimePressed(object sender, EventArgs e)
         {
             switch (myState)
             {
@@ -73,6 +75,26 @@ namespace Microwave.Classes.Controllers
                 case States.SETTIME:
                     time += 1;
                     myDisplay.ShowTime(time, 0);
+                    break;
+                case States.COOKING:
+                    myCooker.AddTime(10);
+                    break;
+            }
+        }
+        public void OnSubtractTimePressed(object sender, EventArgs e)
+        {
+            switch (myState)
+            {
+                case States.SETPOWER:
+                    myDisplay.ShowTime(time, 0);
+                    myState = States.SETTIME;
+                    break;
+                case States.SETTIME:
+                    time -= 1;
+                    myDisplay.ShowTime(time, 0);
+                    break;
+                case States.COOKING:
+                    myCooker.SubtractTime(10);
                     break;
             }
         }

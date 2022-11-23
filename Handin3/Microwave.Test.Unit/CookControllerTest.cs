@@ -27,6 +27,34 @@ namespace Microwave.Test.Unit
             uut = new CookController(timer, display, powerTube, ui);
         }
 
+
+        //<NEW TEST>
+        [TestCase(11)]
+        [TestCase(13)]
+        [TestCase(23)]
+        public void StartCooking_SubtractTime_TimerStarted(int startTime)
+        {
+            uut.StartCooking(50, startTime);
+
+            uut.SubtractTime(10);
+            timer.Received().SubtractTime(10);
+        }
+        //</NEW TEST>
+
+        //<NEW TEST>
+        [TestCase(11)]
+        [TestCase(13)]
+        [TestCase(23)]
+        public void StartCooking_AddTime_TimerStarted(int startTime)
+        {
+            uut.StartCooking(50, startTime);
+
+            uut.AddTime(10);
+           timer.Received().AddTime(10);
+        }
+        //</NEW TEST>
+
+
         [Test]
         public void StartCooking_ValidParameters_TimerStarted()
         {
@@ -49,7 +77,7 @@ namespace Microwave.Test.Unit
             uut.StartCooking(50, 60);
 
             timer.TimeRemaining.Returns(115);
-            timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
+            timer.TimeChanged += Raise.EventWith(this, EventArgs.Empty);
 
             display.Received().ShowTime(1, 55);
         }
