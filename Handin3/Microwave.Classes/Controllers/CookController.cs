@@ -14,27 +14,31 @@ namespace Microwave.Classes.Controllers
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
         private ITimer myTimer;
+        private IBuzzer myBuzzer;
 
         public CookController(
             ITimer timer,
+            IBuzzer buzzer,
             IDisplay display,
             IPowerTube powerTube,
-            IUserInterface ui) : this(timer, display, powerTube)
+            IUserInterface ui) : this(timer, buzzer, display, powerTube)
         {
             UI = ui;
         }
 
         public CookController(
             ITimer timer,
+            IBuzzer buzzer,
             IDisplay display,
             IPowerTube powerTube)
         {
             myTimer = timer;
+            myBuzzer = buzzer;
             myDisplay = display;
             myPowerTube = powerTube;
 
             timer.Expired += new EventHandler(OnTimerExpired);
-            timer.TimerTick += new EventHandler(OnTimerTick);
+            timer.TimeChanged += new EventHandler(OnTimeChanged);
         }
 
         public void StartCooking(int power, int time)
@@ -43,6 +47,9 @@ namespace Microwave.Classes.Controllers
             myTimer.Start(time);
             isCooking = true;
         }
+
+        public void AddTime(int seconds) => myTimer.AddTime(seconds);
+        public void SubtractTime(int seconds) => myTimer.SubtractTime(seconds);
 
         public void Stop()
         {
@@ -57,11 +64,17 @@ namespace Microwave.Classes.Controllers
             {
                 isCooking = false;
                 myPowerTube.TurnOff();
+                myBuzzer.Play(new BuzzerTone[]
+                {
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                    new BuzzerTone(800, 0.2), new BuzzerTone(0, 0.8),
+                });
                 UI.CookingIsDone();
             }
         }
 
-        public void OnTimerTick(object sender, EventArgs e)
+        public void OnTimeChanged(object sender, EventArgs e)
         {
             if (isCooking)
             {

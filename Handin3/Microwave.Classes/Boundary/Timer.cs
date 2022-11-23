@@ -5,10 +5,21 @@ namespace Microwave.Classes.Boundary
 {
     public class Timer : ITimer
     {
-        public int TimeRemaining { get; private set; }
+        public int TimeRemaining
+        {
+            get => _timeRemaining;
+            set
+            {
+                _timeRemaining = Math.Max(0, value);
+                TimeChanged?.Invoke(this, EventArgs.Empty);
+
+                if (_timeRemaining <= 0) Expire();
+            }
+        }
+        private int _timeRemaining;
 
         public event EventHandler Expired;
-        public event EventHandler TimerTick;
+        public event EventHandler TimeChanged;
 
         private System.Timers.Timer timer;
 
@@ -24,8 +35,17 @@ namespace Microwave.Classes.Boundary
 
         public void Start(int time)
         {
-            TimeRemaining = time;
+            _timeRemaining = time;
             timer.Enabled = true;
+        }
+
+        public void AddTime(int seconds)
+        {
+            TimeRemaining += seconds;
+        }
+        public void SubtractTime(int seconds)
+        {
+            TimeRemaining -= seconds;
         }
 
         public void Stop()
@@ -41,15 +61,7 @@ namespace Microwave.Classes.Boundary
 
         private void OnTimerEvent(object sender, System.Timers.ElapsedEventArgs args)
         {
-            // One tick has passed
-            // Do what I should
             TimeRemaining -= 1;
-            TimerTick?.Invoke(this, EventArgs.Empty);
-
-            if (TimeRemaining <= 0)
-            {
-                Expire();
-            }
         }
 
     }
