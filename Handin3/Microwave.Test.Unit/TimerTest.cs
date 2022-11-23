@@ -22,8 +22,6 @@ namespace Microwave.Test.Unit
         [TestCase(7)]
         public void Stop_AddTimer_addedsTime(int startTime)
         {
-            ManualResetEvent pause = new ManualResetEvent(false);
-            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(startTime);
             uut.Stop();
 
@@ -43,8 +41,6 @@ namespace Microwave.Test.Unit
         [TestCase(7)]
         public void Start_AddTimer_addedsTime(int startTime)
         {
-            ManualResetEvent pause = new ManualResetEvent(false);
-            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(startTime);
          
             uut.AddTime(1);
@@ -64,8 +60,6 @@ namespace Microwave.Test.Unit
         [TestCase(11)]
         public void Stop_subtract_subtractTime(int startTime)
         {
-            ManualResetEvent pause = new ManualResetEvent(false);
-            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(startTime);
             uut.Stop();
 
@@ -83,8 +77,6 @@ namespace Microwave.Test.Unit
         [TestCase(11)]
         public void Start_subtract_subtractTime(int startTime)
         {
-            ManualResetEvent pause = new ManualResetEvent(false);
-            uut.TimeChanged += (sender, args) => pause.Set();
             uut.Start(startTime);
 
 
