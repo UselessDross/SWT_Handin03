@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microwave.Classes.Controllers;
 using Microwave.Classes.Interfaces;
 using NSubstitute;
@@ -13,6 +14,7 @@ namespace Microwave.Test.Unit
 
         private IUserInterface ui;
         private ITimer timer;
+        private IBuzzer buzzer;
         private IDisplay display;
         private IPowerTube powerTube;
 
@@ -21,11 +23,25 @@ namespace Microwave.Test.Unit
         {
             ui = Substitute.For<IUserInterface>();
             timer = Substitute.For<ITimer>();
+            buzzer = Substitute.For<IBuzzer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
 
-            uut = new CookController(timer, display, powerTube, ui);
+            uut = new CookController(timer, buzzer, display, powerTube, ui);
         }
+
+
+        //<NEW TEST>
+        [Test]
+        public void Cooking_TimerExpired_BuzzerPlays()
+        {
+            uut.StartCooking(50, 60);
+
+            timer.Expired += Raise.EventWith(this, EventArgs.Empty);
+
+            buzzer.Received(1);
+        }
+        //</NEW TEST>
 
 
         //<NEW TEST>
